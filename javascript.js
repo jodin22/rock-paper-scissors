@@ -22,31 +22,23 @@ function computerPlay() {
     // https://herewecode.io/blog/get-random-element-array-javascript/
 }
 
-console.log(computerPlay());
+const computerSelection = computerPlay();
+console.log(computerSelection);
+
 
 // the below plays a single round. shows who the winner is. 
 const playerInput = prompt("Please input Rock, Paper or Scissors: ");
 const playerSelection = playerInput.toLowerCase(); // convert to lower case for comparison
 console.log(playerSelection);
 
-
-
-/* function playRound(playerSelection, computerSelection) {
+function playRound(playerSelection, computerSelection) {
     if (computerSelection === "rock" && playerSelection === "scissors") {
-        // let loseMessage = "You lose! Rock beats scissors.";
-        console.log("You lose! Rock beats scissors.");
-    } else if (computerSelection === "rock" && playerSelection === "paper") {
-        // let winMessage = "You win! Paper beats rock.";
-        console.log("You win! Paper beats rock.");
-    } else {
-        console.log("You tie");
+        console.log("")
     }
 
 }
 
-
-
-playRound(playerSelection, computerSelection); */
+playRound(playerSelection, computerSelection);
 
 // if computerSelection is rock and playerSelection is rock, then show tie
 // if computerSelection is rock and playerSelection is scissors, then show computer wins
