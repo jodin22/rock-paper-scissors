@@ -22,8 +22,9 @@ function computerPlay() {
     // https://herewecode.io/blog/get-random-element-array-javascript/
 }
 
-const computerSelection = computerPlay();
-console.log(computerSelection);
+const computerSelection = computerPlay();  // puts the return of the function into a variable
+console.log(computerSelection); // prints the value. maybe console.log(computerPlay()) is sufficient without
+// line 25?
 
 
 // the below plays a single round. shows who the winner is. 
@@ -33,24 +34,39 @@ console.log(playerSelection);
 
 function playRound(playerSelection, computerSelection) {
     if (computerSelection === "rock" && playerSelection === "scissors") {
-        console.log("You Lose! Rock beats scissors.");
+        let message = "You Lose! Rock beats scissors.";
+        return message;
+        // console.log("You Lose! Rock beats scissors.");
     } else if (computerSelection === "rock" && playerSelection === "paper") {
-        console.log("You Win! Paper beats rock.");
+        let message = "You Win! Paper beats rock.";
+        return message;
+        // console.log("You Win! Paper beats rock.");
     } else if (computerSelection === "paper" && playerSelection === "scissors") {
-        console.log("You Win! Scissors beats paper.");
+        let message = "You Win! Scissors beats paper.";
+        return message;
+        // console.log("You Win! Scissors beats paper.");
     } else if (computerSelection === "paper" && playerSelection === "rock") {
-        console.log("You Lose! Paper beats rock.");
+        let message = "You Lose! Paper beats rock.";
+        return message;
+        // console.log("You Lose! Paper beats rock.");
     } else if (computerSelection === "scissors" && playerSelection === "rock") {
-        console.log("You Win! Rock beats scissors.");
+        let message = "You Win! Rock beats scissors.";
+        return message;
+        // console.log("You Win! Rock beats scissors.");
     } else if (computerSelection === "scissors" && playerSelection === "paper") {
-        console.log("You Lose! Scissors beats paper.");
+        let message = "You Lose! Scissors beats paper.";
+        return message;
+        // console.log("You Lose! Scissors beats paper.");
     } else {
-        console.log("You tie! You chose the same as the computer");
+        let message = "You tie! You chose the same as the computer";
+        return message;
+        // console.log("You tie! You chose the same as the computer");
     }
       
 }
 
-playRound(playerSelection, computerSelection);
+console.log(playRound(playerSelection, computerSelection)); // prints the return of the function which are 
+// messages
 
 // if computerSelection is rock and playerSelection is rock, then show tie
 // if computerSelection is rock and playerSelection is scissors, then show computer wins
