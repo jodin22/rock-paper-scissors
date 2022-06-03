@@ -15,8 +15,9 @@ function computerPlay() {
     // the nearest whole integer that is less than the output. (ex: Math.floor(1.6905986987355703) = 1)
 
     const randomChoice = choice[Math.floor(Math.random() * choice.length)]; // randomizes the array items  
-    const computerChoice = randomChoice.toLowerCase();
-    return computerChoice; // to send the choice to another function or variable 
+    const computerSelection = randomChoice.toLowerCase();
+    // console.log(computerSelection);
+    return computerSelection; // to send the choice to another function or variable 
 
     // https://herewecode.io/blog/get-random-element-array-javascript/
 }
@@ -26,12 +27,11 @@ console.log(computerPlay());
 // the below plays a single round. shows who the winner is. 
 const playerInput = prompt("Please input Rock, Paper or Scissors: ");
 const playerSelection = playerInput.toLowerCase(); // convert to lower case for comparison
-// playerSelection.toLowerCase();
-const computerSelection = computerPlay();
-console.log(computerSelection);
 console.log(playerSelection);
 
-function playRound(playerSelection, computerSelection) {
+
+
+/* function playRound(playerSelection, computerSelection) {
     if (computerSelection === "rock" && playerSelection === "scissors") {
         // let loseMessage = "You lose! Rock beats scissors.";
         console.log("You lose! Rock beats scissors.");
@@ -44,7 +44,9 @@ function playRound(playerSelection, computerSelection) {
 
 }
 
-playRound(playerSelection, computerSelection);
+
+
+playRound(playerSelection, computerSelection); */
 
 // if computerSelection is rock and playerSelection is rock, then show tie
 // if computerSelection is rock and playerSelection is scissors, then show computer wins
