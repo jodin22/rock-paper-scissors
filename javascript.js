@@ -10,6 +10,9 @@
 // the code for the single round the same (lines 14 to 74). wrapped the code for the single round inside a loop.
 // the loop works. next step is to do the game().
 
+function game() {
+let computerScore = 0;
+let playerScore = 0;
 for (let i = 0; i < 5; i++) {
 function computerPlay() {
     const choice = ['Rock', 'Paper', 'Scissors']; // the array of 3 choices. 0 Rock, 1 Paper, 2 Scissors.
@@ -34,38 +37,50 @@ console.log(computerSelection); // prints the value. maybe console.log(computerP
 // line 30? Not true. Must do it this way, line 30 and 33.
 
 // the below plays a single round. shows who the winner is. 
-const playerInput = prompt("Please input Rock, Paper or Scissors: ");
+const playerInput = prompt("Please input Rock, Paper or Scissors: ", "Scissors");
 const playerSelection = playerInput.toLowerCase(); // convert to lower case for comparison
 console.log(playerSelection);
 
 function playRound(playerSelection, computerSelection) {
     if (computerSelection === "rock" && playerSelection === "scissors") {
         let message = "You Lose! Rock beats scissors.";
-        return message;
+        computerScore = 1 + computerScore;
+        return message + ` Computer win: ${computerScore}. Player win: ${playerScore}`;
         // console.log(message);
     } else if (computerSelection === "rock" && playerSelection === "paper") {
         let message = "You Win! Paper beats rock.";
-        return message;
+        playerScore = 1 + playerScore;
+        return message + ` Computer win: ${computerScore}. Player win: ${playerScore}`;
+        
+        
         // console.log(message);
     } else if (computerSelection === "paper" && playerSelection === "scissors") {
         let message = "You Win! Scissors beats paper.";
-        return message;
+        playerScore = 1 + playerScore;
+        return message + ` Computer win: ${computerScore}. Player win: ${playerScore}`;
+        
         // console.log(message);
     } else if (computerSelection === "paper" && playerSelection === "rock") {
         let message = "You Lose! Paper beats rock.";
-        return message;
+        computerScore = 1 + computerScore;
+        return message + ` Computer win: ${computerScore}. Player win: ${playerScore}`;
+        
         // console.log(message);
     } else if (computerSelection === "scissors" && playerSelection === "rock") {
         let message = "You Win! Rock beats scissors.";
-        return message;
+        playerScore = 1 + playerScore;
+        return message + ` Computer win: ${computerScore}. Player win: ${playerScore}`;
+        
         // console.log(message);
     } else if (computerSelection === "scissors" && playerSelection === "paper") {
         let message = "You Lose! Scissors beats paper.";
-        return message;
+        computerScore = 1 + computerScore;
+        return message + ` Computer win: ${computerScore}. Player win: ${playerScore}`;
+        
         // console.log(message);
     } else {
         let message = "You tie! You chose the same as the computer.";
-        return message;
+        return message + ` Computer win: ${computerScore}. Player win: ${playerScore}`;
         // console.log(message);
     }
       
@@ -73,8 +88,12 @@ function playRound(playerSelection, computerSelection) {
 
 console.log(playRound(playerSelection, computerSelection)); // prints the return of the function which are 
 // messages
+
 }
 
+}
+
+game();
 // game() calls the playRound() but from inside the game(). plays 5 rounds only so a loop for 5 times
 
 /* function game() { // seems to generate the computer and user input correctly, but 
