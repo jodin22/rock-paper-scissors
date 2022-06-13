@@ -10,7 +10,7 @@ function game() {
     let computerScore = 0;  // track win total. starts at 0 and the loop will increase by 1 in each round
     let playerScore = 0;
 
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 5; i++) { // line 14 to 77 plays a single round of computer vs player. put in a 5 round loop.
         function computerPlay() {
             const choice = ['Rock', 'Paper', 'Scissors']; // the array of 3 choices. 0 Rock, 1 Paper, 2 Scissors.
             console.log(choice.length); // shows the size of array, in this case will be 3.
@@ -30,7 +30,7 @@ function game() {
         const computerSelection = computerPlay();  // calls the function and puts the return of the function into a variable
         console.log("Computer shows: " + `${computerSelection}`); // prints the value. 
         
-// the below plays a single round (line 34 to 77). shows who the winner is and keeps score.
+// the below gets the player info and compares with the computer info. shows who the winner is and keeps score.
         const playerInput = prompt("Please input Rock, Paper or Scissors: ", "Scissors");
         const playerSelection = playerInput.toLowerCase(); // convert to lower case for comparison
         console.log("Player shows: " + `${playerSelection}`);
