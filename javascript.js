@@ -27,13 +27,13 @@ function game() {
     // https://herewecode.io/blog/get-random-element-array-javascript/
         }
 
-        const computerSelection = computerPlay();  // calls the function and puts the return of the function into a variable
-        console.log("Computer shows: " + `${computerSelection}`); // prints the value. 
+        const computerSelection = computerPlay();  // calls the function and puts the return of the function into a variable 
         
 // the below gets the player info and compares with the computer info. shows who the winner is and keeps score.
         const playerInput = prompt("Please input Rock, Paper or Scissors: ", "Scissors");
         const playerSelection = playerInput.toLowerCase(); // convert to lower case for comparison
         console.log("Player shows: " + `${playerSelection}`);
+        console.log("Computer shows: " + `${computerSelection}`); // prints the value.
 
         function playRound(playerSelection, computerSelection) {
             if (computerSelection === "rock" && playerSelection === "scissors") {
