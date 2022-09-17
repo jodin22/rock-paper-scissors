@@ -77,6 +77,20 @@
 console.log(playRound(playerSelection, computerSelection)); // calls the function and prints the return of the function which are 
 // messages
 
+const rock = document.querySelector('#rock');
+rock.addEventListener('click', function(e) {
+    console.log(e);
+});
+
+const paper = document.querySelector('#paper');
+paper.addEventListener('click', function(e) {
+    console.log(e);
+});
+
+const scissors = document.querySelector('#scissors');
+scissors.addEventListener('click', function(e) {
+    console.log(e);
+});
 
 // }
 
