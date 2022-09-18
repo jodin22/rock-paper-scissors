@@ -4,7 +4,7 @@ let computerScore = 0;  // track win total. starts at 0 and the loop will increa
     // for (let i = 0; i < 5; i++) { // line 14 to 77 plays a single round of computer vs player. put in a 5 round loop.
         function computerPlay() {
             const choice = ['Rock', 'Paper', 'Scissors']; // the array of 3 choices. 0 Rock, 1 Paper, 2 Scissors.
-            console.log('array size ' + choice.length); // shows the size of array, in this case will be 3.
+            console.log('array size: ' + choice.length); // shows the size of array, in this case will be 3.
     // Math.random is random number between 0 and 1 not including 1, lots of decimals as well. Then you multiply it by 3. it will give 
     // a random number like this 1.6905987733... but you need it to be an integer. that's where Math.floor comes in.
     // console.log(Math.floor(Math.random() * choices.length)); // math floor rounds down the output of math random * 3 to 
@@ -72,7 +72,7 @@ let computerScore = 0;  // track win total. starts at 0 and the loop will increa
             console.log(e);
             console.log('Player shows: ' + e.target.id);
             playerSelection = rock.id;
-            console.log(playerSelection);
+            console.log('Player shows: ' + playerSelection);
         });
         
         const paper = document.querySelector('#paper');
@@ -80,7 +80,7 @@ let computerScore = 0;  // track win total. starts at 0 and the loop will increa
             console.log(e);
             console.log('Player shows: ' + e.target.id);
             playerSelection = paper.id;
-            console.log(playerSelection);
+            console.log('Player shows: ' + playerSelection);
         });
         
         const scissors = document.querySelector('#scissors');
@@ -88,7 +88,7 @@ let computerScore = 0;  // track win total. starts at 0 and the loop will increa
             console.log(e);
             console.log('Player shows: ' + e.target.id);
             playerSelection = scissors.id;
-            console.log(playerSelection);
+            console.log('Player shows: ' + playerSelection);
         });
 
 function playRound(e) { // receives the event. notice there is only one argument, the event aka e. notice further below we can still 
