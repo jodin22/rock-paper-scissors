@@ -76,17 +76,18 @@ function playRound(playerSelection, computerSelection) {
 
 // this is testing if you can get the id attribute which has the rock, paper, scissors value which you can compare with 
 // the computer's choice and see who wins/loses. 
-const player = document.querySelector('.player-choice');
-const computer = document.querySelector('.computer-choice');
-const singleRound = document.querySelector('.single-round');
-const score = document.querySelector('.score');
-const computerWin = document.createElement('div');
-const playerWin = document.createElement('div');
-const tie = document.createElement('div');
-computerWin.classList.add('computer-score');
-playerWin.classList.add('player-score');
-tie.classList.add('tie-score');
-score.appendChild(computerWin);
+
+const player = document.querySelector('.player-choice'); // get the class and put in a var
+const computer = document.querySelector('.computer-choice'); // get the class and put in a var
+const singleRound = document.querySelector('.single-round'); // get the class and put in a var
+const score = document.querySelector('.score'); // get the class and put in a var
+const computerWin = document.createElement('div'); // create a div 
+const playerWin = document.createElement('div'); // create a div
+const tie = document.createElement('div'); // create a div
+computerWin.classList.add('computer-score'); // add class to the new div
+playerWin.classList.add('player-score'); // add class to the new div
+tie.classList.add('tie-score'); // add class to the new div
+score.appendChild(computerWin); // the new divs all have a new class and are all appended to the score div
 score.appendChild(playerWin);
 score.appendChild(tie);
 //const playerWin
@@ -97,17 +98,17 @@ rock.addEventListener('click', function(e) {  // event listener with a callback 
     console.log(e);  // show the entire event
     console.log('Player shows: ' + e.target.id);  // show just the id attribute which is rock
     const playerSelection = rock.id; // put the id attribute in a var
-    player.textContent = `Player selects: ${playerSelection}`;
-    computer.textContent = `Computer selects: ${computerSelection}`;
+    player.textContent = `Player selects: ${playerSelection}`; // shows the player choice in the div
+    computer.textContent = `Computer selects: ${computerSelection}`; // shows the computer choice in the div
     // console.log('Player shows: ' + player); // show the player's selection
     const singleOutcome = playRound(playerSelection, computerSelection); // call the function and pass the playerSelection and
     // the computerSelection. must use var to receive the value that the function returns. the player part is from this block of
     // code within the event listener. the computer part is from the computerPlay() that returns a var which is public so any 
     // function can grab it.
-    singleRound.textContent = `${singleOutcome}`;
-    computerWin.textContent = `Computer win: ${computerScore}`;
-    playerWin.textContent = `Player win: ${playerScore}`;
-    tie.textContent = `Tie: ${tieScore}`;
+    singleRound.textContent = `${singleOutcome}`; // shows the result of that round in the div
+    computerWin.textContent = `Computer win: ${computerScore}`; // shows the computer score
+    playerWin.textContent = `Player win: ${playerScore}`; // shows the player score
+    tie.textContent = `Tie: ${tieScore}`;  // shows the tie score
     console.log(singleOutcome); // show the outcome of a single round
 });
 
@@ -116,17 +117,17 @@ paper.addEventListener('click', function(e) { // event listener with a callback 
     console.log(e);  // show the entire event
     console.log('Player shows: ' + e.target.id);  // show just the id attribute which is paper 
     const playerSelection = paper.id;   // put the id attribute in a var
-    player.textContent = `Player selects: ${playerSelection}`;
-    computer.textContent = `Computer selects: ${computerSelection}`;
+    player.textContent = `Player selects: ${playerSelection}`; // shows the player choice in the div
+    computer.textContent = `Computer selects: ${computerSelection}`; // shows the computer choice in the div
     // console.log('Player shows: ' + player);   // show the player's selection
     const singleOutcome = playRound(playerSelection, computerSelection); // call the function and pass the playerSelection and
     // the computerSelection. must use var to receive the value that the function returns. the player part is from this block of
     // code within the event listener. the computer part is from the computerPlay() that returns a var which is public so any 
     // function can grab it.
-    singleRound.textContent = `${singleOutcome}`;
-    computerWin.textContent = `Computer win: ${computerScore}`;
-    playerWin.textContent = `Player win: ${playerScore}`;
-    tie.textContent = `Tie: ${tieScore}`;
+    singleRound.textContent = `${singleOutcome}`; // shows the result of that round in the div
+    computerWin.textContent = `Computer win: ${computerScore}`; // shows the computer score
+    playerWin.textContent = `Player win: ${playerScore}`; // shows the player score
+    tie.textContent = `Tie: ${tieScore}`;  // shows the tie score
     console.log(singleOutcome); // show the outcome of a single round
 });
 
@@ -135,17 +136,17 @@ scissors.addEventListener('click', function(e) { // add event listener with a ca
     console.log(e); // show the entire event
     console.log('Player shows: ' + e.target.id);  // show just the id attribute which is scissors
     const playerSelection = scissors.id;  // put the id attribute in a var
-    player.textContent = `Player selects: ${playerSelection}`;
-    computer.textContent = `Computer selects: ${computerSelection}`;
+    player.textContent = `Player selects: ${playerSelection}`;  // shows the player choice
+    computer.textContent = `Computer selects: ${computerSelection}`; // shows the computer choice
     // console.log('Player shows: ' + player); // show the player's selection
     const singleOutcome = playRound(playerSelection, computerSelection); // call the function and pass the playerSelection and
     // the computerSelection. must use var to receive the value that the function returns. the player part is from this block of
     // code within the event listener. the computer part is from the computerPlay() that returns a var which is public so any 
     // function can grab it.
-    singleRound.textContent = `${singleOutcome}`;
-    computerWin.textContent = `Computer win: ${computerScore}`;
-    playerWin.textContent = `Player win: ${playerScore}`;
-    tie.textContent = `Tie: ${tieScore}`;
+    singleRound.textContent = `${singleOutcome}`;  // shows the result of that round
+    computerWin.textContent = `Computer win: ${computerScore}`;  // shows the computer score
+    playerWin.textContent = `Player win: ${playerScore}`;  // shows the player score
+    tie.textContent = `Tie: ${tieScore}`;  // shows the tie score
     console.log(singleOutcome);  // show the outcome of a single round
 });
 
