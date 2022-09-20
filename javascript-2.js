@@ -21,18 +21,18 @@ let newMessage = '';
         }
 
         const computerSelection = computerPlay();
-        console.log(computerSelection);
+        console.log(`computer shows: ${computerSelection}`);
         // console.log(typeof computerSelection);  to check type b/c the if/then's weren't working and want to be sure that 
         // we are comparing strings and not numbers or objects.
 
-function playRound(e) { // receives the event. notice there is only one argument, the event aka e. notice further below we can still 
+function playRound(playerSelection, computerSelection) { // receives the event. notice there is only one argument, the event aka e. notice further below we can still 
     // grab the computer's choice from the function computerPlay() even though we didn't put that in the ( ) of our playRound 
     // function. since our playRound is only receiving e, how did it get the computerSelection? is this bc a function can 
     // grab any var it wants outside of it to use, but any var local to the function can only be seen outside the function when 
     // you use the return? and the computerSelection is the return of the randomComputerSelection from the computerPlay function 
     // but the returned value is received into a global var and that's why the playRound function can make use of it.
 
-    const playerSelection = e.target.id; // using target.id, we only focus on the id which has the word for rock, paper, scissors 
+    // const playerSelection = e.target.id; // using target.id, we only focus on the id which has the word for rock, paper, scissors 
     // which will be used for comparing the player vs computer when we do our if, else if, else's.
     console.log('Player shows: ' + playerSelection);
     // console.log(typeof playerSelection); // to check type b/c the if/then's weren't working and want to be sure that 
@@ -43,12 +43,49 @@ function playRound(e) { // receives the event. notice there is only one argument
 
     console.log(`does ${playerSelection} beat ${computerSelection}?`);
 
-    
+    if (computerSelection === "rock" && playerSelection === "scissors") {
+        let message = "You Lose! Rock beats scissors.";
+        computerScore = 1 + computerScore;
+        return message + ` Computer win total: ${computerScore}. Player win total: ${playerScore}`;
+// console.log(message);
+    } else if (computerSelection === "rock" && playerSelection === "paper") {
+        let message = "You Win! Paper beats rock.";
+        playerScore = 1 + playerScore;
+        return message + ` Computer win total: ${computerScore}. Player win total: ${playerScore}`;
+// console.log(message);
+    } else if (computerSelection === "paper" && playerSelection === "scissors") {
+        let message = "You Win! Scissors beats paper.";
+        playerScore = 1 + playerScore;
+        return message + ` Computer win total: ${computerScore}. Player win total: ${playerScore}`;
+// console.log(message);
+    } else if (computerSelection === "paper" && playerSelection === "rock") {
+        let message = "You Lose! Paper beats rock.";
+        computerScore = 1 + computerScore;
+        return message + ` Computer win total: ${computerScore}. Player win total: ${playerScore}`;
+// console.log(message);
+    } else if (computerSelection === "scissors" && playerSelection === "rock") {
+        let message = "You Win! Rock beats scissors.";
+        playerScore = 1 + playerScore;
+        return message + ` Computer win total: ${computerScore}. Player win total: ${playerScore}`;
+// console.log(message);
+    } else if (computerSelection === "scissors" && playerSelection === "paper") {
+        let message = "You Lose! Scissors beats paper.";
+        computerScore = 1 + computerScore;
+        return message + ` Computer win total: ${computerScore}. Player win total: ${playerScore}`;
+// console.log(message);
+    } else {
+        let message = "You tie! You chose the same as the computer.";
+        return message + ` Computer win total: ${computerScore}. Player win total: ${playerScore}`;
+// console.log(message);
+    }
+
+
     // this is testing if computer's choice is handled correclty. when you uncomment this block, the computer's choice is
     // handled correclty.  you commented this out to test the player's choice and those are handled correctly as well. 
     // next is to compare the computer and player choice in one line and see if that works. then build out for each 
     // type of combo and see what happens and then add the scores and show a message
 
+    /*
     if (computerSelection === "rock") {
         console.log('computer is showing rock');
     } 
@@ -61,6 +98,7 @@ function playRound(e) { // receives the event. notice there is only one argument
     else {
         console.log('something is weird? because nothing is showing');
     }
+    */
 
     
 
@@ -91,6 +129,7 @@ function playRound(e) { // receives the event. notice there is only one argument
     }
     */
 
+
 }
 
 // this is testing if you can get the id attribute which has the rock, paper, scissors value which you can compare with 
@@ -100,29 +139,37 @@ const rock = document.querySelector('#rock'); // get the id attribute and put in
 rock.addEventListener('click', function(e) {  // add event listener with a callback to get the properties of the event
     console.log(e);  // show the entire event
     console.log('Player shows: ' + e.target.id);  // show just the id attribute which is rock
-    let player = rock.id; // put the id attribute in a var
-    console.log('Player shows: ' + player); // show the player's selection
+    const playerSelection = rock.id; // put the id attribute in a var
+    // console.log('Player shows: ' + player); // show the player's selection
+    const singleOutcome = playRound(playerSelection, computerSelection);
+    console.log(singleOutcome);
 });
 
 const paper = document.querySelector('#paper');   // get the id attribute and put in a var
 paper.addEventListener('click', function(e) { // add event listener with a callback to get the properties of the event
     console.log(e);  // show the entire event
     console.log('Player shows: ' + e.target.id);  // show just the id attribute which is paper 
-    let player = paper.id;   // put the id attribute in a var
-    console.log('Player shows: ' + player);   // show the player's selection
+    const playerSelection = paper.id;   // put the id attribute in a var
+    // console.log('Player shows: ' + player);   // show the player's selection
+    const singleOutcome = playRound(playerSelection, computerSelection);
+    console.log(singleOutcome);
 });
 
 const scissors = document.querySelector('#scissors'); // get the id attribute and put in a var
 scissors.addEventListener('click', function(e) { // add event listener with a callback to get the properties of the event
     console.log(e); // show the entire event
     console.log('Player shows: ' + e.target.id);  // show just the id attribute which is scissors
-    let player = scissors.id;  // put the id attribute in a var
-    console.log('Player shows: ' + player); // show the player's selection
+    const playerSelection = scissors.id;  // put the id attribute in a var
+    // console.log('Player shows: ' + player); // show the player's selection
+    const singleOutcome = playRound(playerSelection, computerSelection);
+    console.log(singleOutcome);
 });
 
+/*
 rock.addEventListener('click', playRound);  // call the playRound function which passes the entire event
 paper.addEventListener('click', playRound);
 scissors.addEventListener('click', playRound);
+*/
 
 /*
 if (computerSelection == "rock" && playerSelection == "scissors") {
