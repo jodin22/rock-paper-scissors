@@ -1,5 +1,12 @@
 let computerScore = 0;  // track win total. starts at 0 and the loop will increase by 1 in each round
 let playerScore = 0;
+let tieScore = 0; // track tie total
+
+// each of these var are global so the playRound() can grab it and change it but don't need 
+// to return it since it is only updating the global var since it is not just local to playRound()
+
+// whereas the var randomComputerSelection is local to computerPlay() so it needs a return for the rest of the program to use that
+// var, which then is named computerSelection as a global var which means other functions can now grab it.
 
 // for (let i = 0; i < 5; i++) { // line 14 to 77 plays a single round of computer vs player. put in a 5 round loop.
 function computerPlay() {
@@ -31,54 +38,76 @@ function playRound(playerSelection, computerSelection) {
     // console.log(typeof playerSelection); // to check type b/c the if/then's weren't working and want to be sure that 
         // we are comparing strings and not numbers or objects.
     console.log('Computer shows: ' + computerSelection);
-    // console.log(typeof computerSelection); // this var was never passed to the playRound function. only the event
-    // was passed to this function. since this var is a global var, the playRound function can use it
+    // console.log(typeof computerSelection);
 
     console.log(`does ${playerSelection} beat ${computerSelection}?`);
 
     if (computerSelection === "rock" && playerSelection === "scissors") {
         let message = "You Lose! Rock beats scissors.";
         computerScore = 1 + computerScore;
-        return message + ` Computer win total: ${computerScore}. Player win total: ${playerScore}`;
+        return message // + ` Computer win total: ${computerScore}. Player win total: ${playerScore}`;
     } else if (computerSelection === "rock" && playerSelection === "paper") {
         let message = "You Win! Paper beats rock.";
         playerScore = 1 + playerScore;
-        return message + ` Computer win total: ${computerScore}. Player win total: ${playerScore}`;
+        return message // + ` Computer win total: ${computerScore}. Player win total: ${playerScore}`;
     } else if (computerSelection === "paper" && playerSelection === "scissors") {
         let message = "You Win! Scissors beats paper.";
         playerScore = 1 + playerScore;
-        return message + ` Computer win total: ${computerScore}. Player win total: ${playerScore}`;
+        return message // + ` Computer win total: ${computerScore}. Player win total: ${playerScore}`;
     } else if (computerSelection === "paper" && playerSelection === "rock") {
         let message = "You Lose! Paper beats rock.";
         computerScore = 1 + computerScore;
-        return message + ` Computer win total: ${computerScore}. Player win total: ${playerScore}`;
+        return message // + ` Computer win total: ${computerScore}. Player win total: ${playerScore}`;
     } else if (computerSelection === "scissors" && playerSelection === "rock") {
         let message = "You Win! Rock beats scissors.";
         playerScore = 1 + playerScore;
-        return message + ` Computer win total: ${computerScore}. Player win total: ${playerScore}`;
+        return message // + ` Computer win total: ${computerScore}. Player win total: ${playerScore}`;
     } else if (computerSelection === "scissors" && playerSelection === "paper") {
         let message = "You Lose! Scissors beats paper.";
         computerScore = 1 + computerScore;
-        return message + ` Computer win total: ${computerScore}. Player win total: ${playerScore}`;
+        return message // + ` Computer win total: ${computerScore}. Player win total: ${playerScore}`;
     } else {
         let message = "You tie! You chose the same as the computer.";
-        return message + ` Computer win total: ${computerScore}. Player win total: ${playerScore}`;
+        tieScore = 1 + tieScore;
+        return message // + ` Computer win total: ${computerScore}. Player win total: ${playerScore}`;
     }
 
 }
 
 // this is testing if you can get the id attribute which has the rock, paper, scissors value which you can compare with 
 // the computer's choice and see who wins/loses. 
+const player = document.querySelector('.player-choice');
+const computer = document.querySelector('.computer-choice');
+const singleRound = document.querySelector('.single-round');
+const score = document.querySelector('.score');
+const computerWin = document.createElement('div');
+const playerWin = document.createElement('div');
+const tie = document.createElement('div');
+computerWin.classList.add('computer-score');
+playerWin.classList.add('player-score');
+tie.classList.add('tie-score');
+score.appendChild(computerWin);
+score.appendChild(playerWin);
+score.appendChild(tie);
+//const playerWin
+//const tie
+
 const rock = document.querySelector('#rock'); // get the id attribute and put in a var
 rock.addEventListener('click', function(e) {  // event listener with a callback to get the properties of the event
     console.log(e);  // show the entire event
     console.log('Player shows: ' + e.target.id);  // show just the id attribute which is rock
     const playerSelection = rock.id; // put the id attribute in a var
+    player.textContent = `Player selects: ${playerSelection}`;
+    computer.textContent = `Computer selects: ${computerSelection}`;
     // console.log('Player shows: ' + player); // show the player's selection
     const singleOutcome = playRound(playerSelection, computerSelection); // call the function and pass the playerSelection and
     // the computerSelection. must use var to receive the value that the function returns. the player part is from this block of
     // code within the event listener. the computer part is from the computerPlay() that returns a var which is public so any 
     // function can grab it.
+    singleRound.textContent = `${singleOutcome}`;
+    computerWin.textContent = `Computer win: ${computerScore}`;
+    playerWin.textContent = `Player win: ${playerScore}`;
+    tie.textContent = `Tie: ${tieScore}`;
     console.log(singleOutcome); // show the outcome of a single round
 });
 
@@ -87,11 +116,17 @@ paper.addEventListener('click', function(e) { // event listener with a callback 
     console.log(e);  // show the entire event
     console.log('Player shows: ' + e.target.id);  // show just the id attribute which is paper 
     const playerSelection = paper.id;   // put the id attribute in a var
+    player.textContent = `Player selects: ${playerSelection}`;
+    computer.textContent = `Computer selects: ${computerSelection}`;
     // console.log('Player shows: ' + player);   // show the player's selection
     const singleOutcome = playRound(playerSelection, computerSelection); // call the function and pass the playerSelection and
     // the computerSelection. must use var to receive the value that the function returns. the player part is from this block of
     // code within the event listener. the computer part is from the computerPlay() that returns a var which is public so any 
     // function can grab it.
+    singleRound.textContent = `${singleOutcome}`;
+    computerWin.textContent = `Computer win: ${computerScore}`;
+    playerWin.textContent = `Player win: ${playerScore}`;
+    tie.textContent = `Tie: ${tieScore}`;
     console.log(singleOutcome); // show the outcome of a single round
 });
 
@@ -100,11 +135,17 @@ scissors.addEventListener('click', function(e) { // add event listener with a ca
     console.log(e); // show the entire event
     console.log('Player shows: ' + e.target.id);  // show just the id attribute which is scissors
     const playerSelection = scissors.id;  // put the id attribute in a var
+    player.textContent = `Player selects: ${playerSelection}`;
+    computer.textContent = `Computer selects: ${computerSelection}`;
     // console.log('Player shows: ' + player); // show the player's selection
     const singleOutcome = playRound(playerSelection, computerSelection); // call the function and pass the playerSelection and
     // the computerSelection. must use var to receive the value that the function returns. the player part is from this block of
     // code within the event listener. the computer part is from the computerPlay() that returns a var which is public so any 
     // function can grab it.
+    singleRound.textContent = `${singleOutcome}`;
+    computerWin.textContent = `Computer win: ${computerScore}`;
+    playerWin.textContent = `Player win: ${playerScore}`;
+    tie.textContent = `Tie: ${tieScore}`;
     console.log(singleOutcome);  // show the outcome of a single round
 });
 
@@ -137,9 +178,9 @@ MAIN IDEA IS THAT FUNCTIONS CAN GRAB ANY VAR THAT IS GLOBAL. BUT ANY VAR INSIDE 
 OF THE PROGRAM. IN ORDER TO USE THE LOCAL VAR OF A FUNCTION, YOU MUST USE RETURN. ALSO WHEN CALLING A FUNCTION AND YOU WANT TO 
 BE ABLE TO USE THE RETURNED LOCAL VAR, YOU MUST CALL THE FUNCTION AND ASSIGN IT TO A PUBLIC VAR. LIKE THIS: 
 
-const singleOutcome = playRound(playerSelection, computerSelection). this is calling the playRound function and passing 2 arguments.
-and the playRound function does something and returns a value. but that returned value must be received in a var. and that is why 
-you call the playRound function using const something = playRound() instead o just calling it like this
+const singleOutcome = playRound(playerSelection, computerSelection). this is calling the playRound() and passing 2 arguments.
+and the playRound() does something and returns a value. but that returned value must be received in a var. and that is why 
+you call the playRound() using const something = playRound() instead of just calling it like this
 
 playRound()
 
@@ -152,6 +193,6 @@ functions and returning things from a function to another var so that other var 
     // function. since our playRound is only receiving e, how did it get the computerSelection? is this bc a function can 
     // grab any var it wants outside of it to use, but any var local to the function can only be seen outside the function when 
     // you use the return? and the computerSelection is the return of the randomComputerSelection from the computerPlay function 
-    // but the returned value is received into a global var and that's why the playRound function can make use of it.
+    // but the returned value is received into a global var and that's why the playRound function can make use of it?
 
 */
