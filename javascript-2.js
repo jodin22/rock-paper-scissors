@@ -8,7 +8,7 @@ let tieScore = 0; // track tie total
 // whereas the var randomComputerSelection is local to computerPlay() so it needs a return for the rest of the program to use that
 // var, which then is named computerSelection as a global var which means other functions can now grab it.
 
-// for (let i = 0; i < 5; i++) { // line 14 to 77 plays a single round of computer vs player. put in a 5 round loop.
+// for (let i = 0; i <= 5; i++) { // line 14 to 77 plays a single round of computer vs player. put in a 5 round loop.
 function computerPlay() {
     const choice = ['Rock', 'Paper', 'Scissors']; // the array of 3 choices. 0 Rock, 1 Paper, 2 Scissors.
     console.log('array size: ' + choice.length); // shows the size of array, in this case will be 3.
@@ -25,8 +25,11 @@ function computerPlay() {
     // https://herewecode.io/blog/get-random-element-array-javascript/
 }
 
-const computerSelection = computerPlay(); // call the function but must use a var to receive the returned value from the function
-console.log(`computer shows: ${computerSelection}`); // this returned value is now a public var so any function can now use it.
+// the const computerSelection is moved down to the button click event bc when you click the button, it has to get both the 
+// computer's choice and the player's choice at the same time. if you leave the computer choice before the button event, then 
+// the computer choice will never change unless you refresh the page.
+// const computerSelection = computerPlay(); // call the function but must use a var to receive the returned value from the function
+// console.log(`computer shows: ${computerSelection}`); // this returned value is now a public var so any function can now use it.
         // console.log(typeof computerSelection);  to check type b/c the if/then's weren't working and want to be sure that 
         // we are comparing strings and not numbers or objects.
 
@@ -98,6 +101,7 @@ rock.addEventListener('click', function(e) {  // event listener with a callback 
     console.log(e);  // show the entire event
     console.log('Player shows: ' + e.target.id);  // show just the id attribute which is rock
     const playerSelection = rock.id; // put the id attribute in a var
+    const computerSelection = computerPlay();  // calls the function which will return the computer's choice. put in a var
     player.textContent = `Player selects: ${playerSelection}`; // shows the player choice in the div
     computer.textContent = `Computer selects: ${computerSelection}`; // shows the computer choice in the div
     // console.log('Player shows: ' + player); // show the player's selection
@@ -117,6 +121,7 @@ paper.addEventListener('click', function(e) { // event listener with a callback 
     console.log(e);  // show the entire event
     console.log('Player shows: ' + e.target.id);  // show just the id attribute which is paper 
     const playerSelection = paper.id;   // put the id attribute in a var
+    const computerSelection = computerPlay(); // calls the function which will return the computer's choice. put in a var
     player.textContent = `Player selects: ${playerSelection}`; // shows the player choice in the div
     computer.textContent = `Computer selects: ${computerSelection}`; // shows the computer choice in the div
     // console.log('Player shows: ' + player);   // show the player's selection
@@ -136,6 +141,7 @@ scissors.addEventListener('click', function(e) { // add event listener with a ca
     console.log(e); // show the entire event
     console.log('Player shows: ' + e.target.id);  // show just the id attribute which is scissors
     const playerSelection = scissors.id;  // put the id attribute in a var
+    const computerSelection = computerPlay(); // calls the function which will return the computer's choice. put in a var
     player.textContent = `Player selects: ${playerSelection}`;  // shows the player choice
     computer.textContent = `Computer selects: ${computerSelection}`; // shows the computer choice
     // console.log('Player shows: ' + player); // show the player's selection
@@ -149,6 +155,15 @@ scissors.addEventListener('click', function(e) { // add event listener with a ca
     tie.textContent = `Tie: ${tieScore}`;  // shows the tie score
     console.log(singleOutcome);  // show the outcome of a single round
 });
+
+/*  
+Display the running score, and announce a winner of the game once one player reaches 5 points.
+
+the running score is in a div for now. add some if/then to show a message when either player or computer gets 5 points.
+
+
+
+*/
 
 /*
 rock.addEventListener('click', playRound);  // call the playRound function which passes the entire event
