@@ -87,12 +87,15 @@ const score = document.querySelector('.score'); // get the class and put in a va
 const computerWin = document.createElement('div'); // create a div 
 const playerWin = document.createElement('div'); // create a div
 const tie = document.createElement('div'); // create a div
+const gameWinner = document.createElement('div'); // create a div
 computerWin.classList.add('computer-score'); // add class to the new div
 playerWin.classList.add('player-score'); // add class to the new div
 tie.classList.add('tie-score'); // add class to the new div
+gameWinner.classList.add('win-message'); // add class to the new div
 score.appendChild(computerWin); // the new divs all have a new class and are all appended to the score div
 score.appendChild(playerWin);
 score.appendChild(tie);
+score.appendChild(gameWinner);
 //const playerWin
 //const tie
 
@@ -114,6 +117,11 @@ rock.addEventListener('click', function(e) {  // event listener with a callback 
     playerWin.textContent = `Player win: ${playerScore}`; // shows the player score
     tie.textContent = `Tie: ${tieScore}`;  // shows the tie score
     console.log(singleOutcome); // show the outcome of a single round
+    if (computerScore >= 5) {
+        gameWinner.textContent = 'Computer is the winner! Game over.';
+    } else if (playerScore >= 5) {
+        gameWinner.textContent = 'Player is the winner! Game over.';
+    }
 });
 
 const paper = document.querySelector('#paper');   // get the id attribute and put in a var
@@ -134,6 +142,11 @@ paper.addEventListener('click', function(e) { // event listener with a callback 
     playerWin.textContent = `Player win: ${playerScore}`; // shows the player score
     tie.textContent = `Tie: ${tieScore}`;  // shows the tie score
     console.log(singleOutcome); // show the outcome of a single round
+    if (computerScore >= 5) {
+        gameWinner.textContent = 'Computer is the winner! Game over.';
+    } else if (playerScore >= 5) {
+        gameWinner.textContent = 'Player is the winner! Game over.';
+    }
 });
 
 const scissors = document.querySelector('#scissors'); // get the id attribute and put in a var
@@ -154,6 +167,11 @@ scissors.addEventListener('click', function(e) { // add event listener with a ca
     playerWin.textContent = `Player win: ${playerScore}`;  // shows the player score
     tie.textContent = `Tie: ${tieScore}`;  // shows the tie score
     console.log(singleOutcome);  // show the outcome of a single round
+    if (computerScore >= 5) {
+        gameWinner.textContent = 'Computer is the winner! Game over.';
+    } else if (playerScore >= 5) {
+        gameWinner.textContent = 'Player is the winner! Game over.';
+    }
 });
 
 /*  
