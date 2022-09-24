@@ -80,10 +80,12 @@ function playRound(playerSelection, computerSelection) {
 // this is testing if you can get the id attribute which has the rock, paper, scissors value which you can compare with 
 // the computer's choice and see who wins/loses. 
 
+const playerCard = document.querySelector('.player-card'); // get the class and put in a var
+const computerCard = document.querySelector('.computer-card');
 const player = document.querySelector('.player-choice'); // get the class and put in a var
 const computer = document.querySelector('.computer-choice'); // get the class and put in a var
 const singleRound = document.querySelector('.single-round'); // get the class and put in a var
-const score = document.querySelector('.score'); // get the class and put in a var
+const tbd = document.querySelector('.tbd'); // get the class and put in a var
 const computerWin = document.createElement('div'); // create a div 
 const playerWin = document.createElement('div'); // create a div
 const tie = document.createElement('div'); // create a div
@@ -92,10 +94,10 @@ computerWin.classList.add('computer-score'); // add class to the new div
 playerWin.classList.add('player-score'); // add class to the new div
 tie.classList.add('tie-score'); // add class to the new div
 gameWinner.classList.add('win-message'); // add class to the new div
-score.appendChild(computerWin); // the new divs all have a new class and are all appended to the score div
-score.appendChild(playerWin);
-score.appendChild(tie);
-score.appendChild(gameWinner);
+playerCard.appendChild(playerWin); // the new divs all have a new class and are all appended to the score div
+computerCard.appendChild(computerWin); 
+tbd.appendChild(tie);  // place these elsewhere for now until you get the player/computer choice and score looking like a card
+tbd.appendChild(gameWinner);
 //const playerWin
 //const tie
 
@@ -113,8 +115,8 @@ rock.addEventListener('click', function(e) {  // event listener with a callback 
     // code within the event listener. the computer part is from the computerPlay() that returns a var which is public so any 
     // function can grab it.
     singleRound.textContent = `${singleOutcome}`; // shows the result of that round in the div
-    computerWin.textContent = `Computer win: ${computerScore}`; // shows the computer score
-    playerWin.textContent = `Player win: ${playerScore}`; // shows the player score
+    computerWin.textContent = `Computer score: ${computerScore}`; // shows the computer score
+    playerWin.textContent = `Player score: ${playerScore}`; // shows the player score
     tie.textContent = `Tie: ${tieScore}`;  // shows the tie score
     console.log(singleOutcome); // show the outcome of a single round
     if (computerScore >= 5) {
@@ -138,8 +140,8 @@ paper.addEventListener('click', function(e) { // event listener with a callback 
     // code within the event listener. the computer part is from the computerPlay() that returns a var which is public so any 
     // function can grab it.
     singleRound.textContent = `${singleOutcome}`; // shows the result of that round in the div
-    computerWin.textContent = `Computer win: ${computerScore}`; // shows the computer score
-    playerWin.textContent = `Player win: ${playerScore}`; // shows the player score
+    computerWin.textContent = `Computer score: ${computerScore}`; // shows the computer score
+    playerWin.textContent = `Player score: ${playerScore}`; // shows the player score
     tie.textContent = `Tie: ${tieScore}`;  // shows the tie score
     console.log(singleOutcome); // show the outcome of a single round
     if (computerScore >= 5) {
@@ -163,8 +165,8 @@ scissors.addEventListener('click', function(e) { // add event listener with a ca
     // code within the event listener. the computer part is from the computerPlay() that returns a var which is public so any 
     // function can grab it.
     singleRound.textContent = `${singleOutcome}`;  // shows the result of that round
-    computerWin.textContent = `Computer win: ${computerScore}`;  // shows the computer score
-    playerWin.textContent = `Player win: ${playerScore}`;  // shows the player score
+    computerWin.textContent = `Computer score: ${computerScore}`;  // shows the computer score
+    playerWin.textContent = `Player score: ${playerScore}`;  // shows the player score
     tie.textContent = `Tie: ${tieScore}`;  // shows the tie score
     console.log(singleOutcome);  // show the outcome of a single round
     if (computerScore >= 5) {
