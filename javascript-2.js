@@ -43,34 +43,34 @@ function playRound(playerSelection, computerSelection) {
     console.log('Computer shows: ' + computerSelection);
     // console.log(typeof computerSelection);
 
-    console.log(`does ${playerSelection} beat ${computerSelection}?`);
+    // console.log(`does ${playerSelection} beat ${computerSelection}?`);
 
     if (computerSelection === "rock" && playerSelection === "scissors") {
-        let message = "You Lose! Rock beats scissors.";
+        let message = "You Lose this round! Rock beats scissors.";
         computerScore = 1 + computerScore;
         return message // + ` Computer win total: ${computerScore}. Player win total: ${playerScore}`;
     } else if (computerSelection === "rock" && playerSelection === "paper") {
-        let message = "You Win! Paper beats rock.";
+        let message = "You Win this round! Paper beats rock.";
         playerScore = 1 + playerScore;
         return message // + ` Computer win total: ${computerScore}. Player win total: ${playerScore}`;
     } else if (computerSelection === "paper" && playerSelection === "scissors") {
-        let message = "You Win! Scissors beats paper.";
+        let message = "You Win this round! Scissors beats paper.";
         playerScore = 1 + playerScore;
         return message // + ` Computer win total: ${computerScore}. Player win total: ${playerScore}`;
     } else if (computerSelection === "paper" && playerSelection === "rock") {
-        let message = "You Lose! Paper beats rock.";
+        let message = "You Lose this round! Paper beats rock.";
         computerScore = 1 + computerScore;
         return message // + ` Computer win total: ${computerScore}. Player win total: ${playerScore}`;
     } else if (computerSelection === "scissors" && playerSelection === "rock") {
-        let message = "You Win! Rock beats scissors.";
+        let message = "You Win this round! Rock beats scissors.";
         playerScore = 1 + playerScore;
         return message // + ` Computer win total: ${computerScore}. Player win total: ${playerScore}`;
     } else if (computerSelection === "scissors" && playerSelection === "paper") {
-        let message = "You Lose! Scissors beats paper.";
+        let message = "You Lose this round! Scissors beats paper.";
         computerScore = 1 + computerScore;
         return message // + ` Computer win total: ${computerScore}. Player win total: ${playerScore}`;
     } else {
-        let message = "You tie! You chose the same as the computer.";
+        let message = "It's a tie! Nobody gets a point. You chose the same as the computer.";
         tieScore = 1 + tieScore;
         return message // + ` Computer win total: ${computerScore}. Player win total: ${playerScore}`;
     }
@@ -85,21 +85,15 @@ const computerCard = document.querySelector('.computer-card');
 const player = document.querySelector('.player-choice'); // get the class and put in a var
 const computer = document.querySelector('.computer-choice'); // get the class and put in a var
 const singleRound = document.querySelector('.single-round'); // get the class and put in a var
-const tbd = document.querySelector('.tbd'); // get the class and put in a var
+const winner = document.querySelector('.winner'); // get the class and put in a var
 const computerWin = document.createElement('div'); // create a div 
 const playerWin = document.createElement('div'); // create a div
-const tie = document.createElement('div'); // create a div
-const gameWinner = document.createElement('div'); // create a div
+const message = document.createElement('div'); // create a div
 computerWin.classList.add('computer-score'); // add class to the new div
 playerWin.classList.add('player-score'); // add class to the new div
-tie.classList.add('tie-score'); // add class to the new div
-gameWinner.classList.add('win-message'); // add class to the new div
+message.classList.add('win-message'); // add class to the new div
 playerCard.appendChild(playerWin); // the new divs all have a new class and are all appended to the score div
-computerCard.appendChild(computerWin); 
-tbd.appendChild(tie);  // place these elsewhere for now until you get the player/computer choice and score looking like a card
-tbd.appendChild(gameWinner);
-//const playerWin
-//const tie
+computerCard.appendChild(computerWin);
 
 const rock = document.querySelector('#rock'); // get the id attribute and put in a var
 rock.addEventListener('click', function(e) {  // event listener with a callback to get the properties of the event
@@ -117,12 +111,18 @@ rock.addEventListener('click', function(e) {  // event listener with a callback 
     singleRound.textContent = `${singleOutcome}`; // shows the result of that round in the div
     computerWin.textContent = `Computer score: ${computerScore}`; // shows the computer score
     playerWin.textContent = `Player score: ${playerScore}`; // shows the player score
-    tie.textContent = `Tie: ${tieScore}`;  // shows the tie score
+    // tie.textContent = `Tie: ${tieScore}`;  // shows the tie score
     console.log(singleOutcome); // show the outcome of a single round
     if (computerScore >= 5) {
-        gameWinner.textContent = 'Computer is the winner! Game over.';
+        winner.appendChild(message);
+        message.textContent = 'Computer is the winner! Game over.';
+        // this part is optional. refer to repos/javascript-basics/number-game-error. this has the code for adding a new 
+        // button and restarting a game
+        // add 2 buttons. 1 is retry. the other is cancel. when click retry, it restarts the game. when click cancel, it will
+        // disable the 3 buttons at top and refresh the page so all divs are blank
     } else if (playerScore >= 5) {
-        gameWinner.textContent = 'Player is the winner! Game over.';
+        winner.appendChild(message);
+        message.textContent = 'Player is the winner! Game over.';
     }
 });
 
@@ -142,12 +142,14 @@ paper.addEventListener('click', function(e) { // event listener with a callback 
     singleRound.textContent = `${singleOutcome}`; // shows the result of that round in the div
     computerWin.textContent = `Computer score: ${computerScore}`; // shows the computer score
     playerWin.textContent = `Player score: ${playerScore}`; // shows the player score
-    tie.textContent = `Tie: ${tieScore}`;  // shows the tie score
+    // tie.textContent = `Tie: ${tieScore}`;  // shows the tie score
     console.log(singleOutcome); // show the outcome of a single round
     if (computerScore >= 5) {
-        gameWinner.textContent = 'Computer is the winner! Game over.';
+        winner.appendChild(message);
+        message.textContent = 'Computer is the winner! Game over.';
     } else if (playerScore >= 5) {
-        gameWinner.textContent = 'Player is the winner! Game over.';
+        winner.appendChild(message);
+        message.textContent = 'Player is the winner! Game over.';
     }
 });
 
@@ -167,12 +169,14 @@ scissors.addEventListener('click', function(e) { // add event listener with a ca
     singleRound.textContent = `${singleOutcome}`;  // shows the result of that round
     computerWin.textContent = `Computer score: ${computerScore}`;  // shows the computer score
     playerWin.textContent = `Player score: ${playerScore}`;  // shows the player score
-    tie.textContent = `Tie: ${tieScore}`;  // shows the tie score
+    // tie.textContent = `Tie: ${tieScore}`;  // shows the tie score
     console.log(singleOutcome);  // show the outcome of a single round
     if (computerScore >= 5) {
-        gameWinner.textContent = 'Computer is the winner! Game over.';
+        winner.appendChild(message);
+        message.textContent = 'Computer is the winner! Game over.';
     } else if (playerScore >= 5) {
-        gameWinner.textContent = 'Player is the winner! Game over.';
+        winner.appendChild(message);
+        message.textContent = 'Player is the winner! Game over.';
     }
 });
 
@@ -180,7 +184,6 @@ scissors.addEventListener('click', function(e) { // add event listener with a ca
 Display the running score, and announce a winner of the game once one player reaches 5 points.
 
 the running score is in a div for now. add some if/then to show a message when either player or computer gets 5 points.
-
 
 
 */
