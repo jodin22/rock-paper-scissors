@@ -1,3 +1,6 @@
+// if you ever want to edit this so the buttons disappear and a new button appears to reset the game, then look at this
+// home/jodin22sams/repos/javascript-basics/number-game-error.html
+
 // the var randomComputerSelection is local to computerPlay() so it needs a return for the rest of the program to use that
 // var, which then is named computerSelection as a global var which means other functions can now grab it.
 
