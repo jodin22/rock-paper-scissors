@@ -1,13 +1,5 @@
-
-
-// each of these var are global so the playRound() can grab it and change it but don't need 
-// to return it since it is only updating the global var since it is not just local to playRound()
-// also the click event can grab the var's value and use it
-
-// whereas the var randomComputerSelection is local to computerPlay() so it needs a return for the rest of the program to use that
+// the var randomComputerSelection is local to computerPlay() so it needs a return for the rest of the program to use that
 // var, which then is named computerSelection as a global var which means other functions can now grab it.
-
-// for (let i = 0; i <= 5; i++) { // line 14 to 77 plays a single round of computer vs player. put in a 5 round loop.
 
 function computerPlay() {
     const choice = ['Rock', 'Paper', 'Scissors']; // the array of 3 choices. 0 Rock, 1 Paper, 2 Scissors.
@@ -77,10 +69,6 @@ function playRound(playerSelection, computerSelection) {
 
 }
 
-// console.log(i);
-
-// }
-
 // this is testing if you can get the id attribute which has the rock, paper, scissors value which you can compare with 
 // the computer's choice and see who wins/loses. 
 
@@ -105,6 +93,9 @@ message.classList.add('win-message'); // add class to the new div
 playerCard.appendChild(playerWin); 
 computerCard.appendChild(computerWin);
 
+// the score vars are global so the playRound() can grab it and change it but don't need 
+// to return it since it is only updating the global var since it is not just local to playRound()
+// also the click event can grab the var's value and use it
 let computerScore = 0;  // track win total. starts at 0 and the loop will increase by 1 in each round
 let playerScore = 0;
 let tieScore = 0; // track tie total but don't show it. originally you had it shown but don't need it.
@@ -235,7 +226,8 @@ Display the running score, and announce a winner of the game once one player rea
 
 the running score is in a div for now. add some if/then to show a message when either player or computer gets 5 points.
 
-also make sure you can have this in a loop that stops when either the computer or player reaches 5 points.
+the first hw for this was a loop of 5 rounds. now this hw isn't using a loop but when the points for either computer 
+or player equals 5, then the game stops by disabling the button and changing the color of the button
 
 */
 
