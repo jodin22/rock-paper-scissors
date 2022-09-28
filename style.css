@@ -1,7 +1,13 @@
-#container {
+#container {  /* the entire thing is in flex column format but each individual section is in flex row format */
     display: flex;
     flex-direction: column;
     flex: 1 1 auto;
+}
+
+h1 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .button {
@@ -30,16 +36,18 @@ button {
     padding: 20px 160px 20px 160px;
 }
 
-.player-card {
+.player-card {  
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* the player and computer section is put in a column so the selection and score are always on top of
+    each other */
     gap: 20px;
     text-align: center;
 }
 
 .computer-card {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* the player and computer section is put in a column so the selection and score are always on top of
+    each other */
     gap: 20px;
     text-align: center;
 }

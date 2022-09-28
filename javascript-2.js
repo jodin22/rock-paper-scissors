@@ -1,14 +1,14 @@
-let computerScore = 0;  // track win total. starts at 0 and the loop will increase by 1 in each round
-let playerScore = 0;
-let tieScore = 0; // track tie total
+
 
 // each of these var are global so the playRound() can grab it and change it but don't need 
 // to return it since it is only updating the global var since it is not just local to playRound()
+// also the click event can grab the var's value and use it
 
 // whereas the var randomComputerSelection is local to computerPlay() so it needs a return for the rest of the program to use that
 // var, which then is named computerSelection as a global var which means other functions can now grab it.
 
 // for (let i = 0; i <= 5; i++) { // line 14 to 77 plays a single round of computer vs player. put in a 5 round loop.
+
 function computerPlay() {
     const choice = ['Rock', 'Paper', 'Scissors']; // the array of 3 choices. 0 Rock, 1 Paper, 2 Scissors.
     console.log('array size: ' + choice.length); // shows the size of array, in this case will be 3.
@@ -77,23 +77,37 @@ function playRound(playerSelection, computerSelection) {
 
 }
 
+// console.log(i);
+
+// }
+
 // this is testing if you can get the id attribute which has the rock, paper, scissors value which you can compare with 
 // the computer's choice and see who wins/loses. 
 
-const playerCard = document.querySelector('.player-card'); // get the class and put in a var
-const computerCard = document.querySelector('.computer-card');
+// these vars are part of the original html
+const playerCard = document.querySelector('.player-card'); // get the class and put in a var.
+const computerCard = document.querySelector('.computer-card'); // get the class and put in a var
 const player = document.querySelector('.player-choice'); // get the class and put in a var
 const computer = document.querySelector('.computer-choice'); // get the class and put in a var
 const singleRound = document.querySelector('.single-round'); // get the class and put in a var
 const winner = document.querySelector('.winner'); // get the class and put in a var
-const computerWin = document.createElement('div'); // create a div 
+
+// these vars create new html that are divs and will add classes to the new divs
+const computerWin = document.createElement('div'); // create a div  
 const playerWin = document.createElement('div'); // create a div
 const message = document.createElement('div'); // create a div
+
 computerWin.classList.add('computer-score'); // add class to the new div
 playerWin.classList.add('player-score'); // add class to the new div
 message.classList.add('win-message'); // add class to the new div
-playerCard.appendChild(playerWin); // the new divs all have a new class and are all appended to the score div
+
+// these new divs have new classes and are appended to the parent divs
+playerCard.appendChild(playerWin); 
 computerCard.appendChild(computerWin);
+
+let computerScore = 0;  // track win total. starts at 0 and the loop will increase by 1 in each round
+let playerScore = 0;
+let tieScore = 0; // track tie total but don't show it. originally you had it shown but don't need it.
 
 const rock = document.querySelector('#rock'); // get the id attribute and put in a var
 rock.addEventListener('click', function(e) {  // event listener with a callback to get the properties of the event
@@ -116,13 +130,24 @@ rock.addEventListener('click', function(e) {  // event listener with a callback 
     if (computerScore >= 5) {
         winner.appendChild(message);
         message.textContent = 'Computer is the winner! Game over.';
-        // this part is optional. refer to repos/javascript-basics/number-game-error. this has the code for adding a new 
-        // button and restarting a game
-        // add 2 buttons. 1 is retry. the other is cancel. when click retry, it restarts the game. when click cancel, it will
-        // disable the 3 buttons at top and refresh the page so all divs are blank
+        rock.disabled = true;
+        rock.style.backgroundColor = 'white';
+        paper.disabled = true;
+        paper.style.backgroundColor = 'white';
+        scissors.disabled = true;
+        scissors.style.backgroundColor = 'white';
+        // for future reference if you ever want to create a reset button after the game has finished, then 
+        // refer to repos/javascript-basics/number-game-error. this has code for adding a new button and restarting a game
+        // it also has a loop to blank out the div p's to show a blank screen for a new game
     } else if (playerScore >= 5) {
         winner.appendChild(message);
         message.textContent = 'Player is the winner! Game over.';
+        rock.disabled = true;
+        rock.style.backgroundColor = 'white';
+        paper.disabled = true;
+        paper.style.backgroundColor = 'white';
+        scissors.disabled = true;
+        scissors.style.backgroundColor = 'white';
     }
 });
 
@@ -147,9 +172,21 @@ paper.addEventListener('click', function(e) { // event listener with a callback 
     if (computerScore >= 5) {
         winner.appendChild(message);
         message.textContent = 'Computer is the winner! Game over.';
+        rock.disabled = true;
+        rock.style.backgroundColor = 'white';
+        paper.disabled = true;
+        paper.style.backgroundColor = 'white';
+        scissors.disabled = true;
+        scissors.style.backgroundColor = 'white';
     } else if (playerScore >= 5) {
         winner.appendChild(message);
         message.textContent = 'Player is the winner! Game over.';
+        rock.disabled = true;
+        rock.style.backgroundColor = 'white';
+        paper.disabled = true;
+        paper.style.backgroundColor = 'white';
+        scissors.disabled = true;
+        scissors.style.backgroundColor = 'white';
     }
 });
 
@@ -174,17 +211,31 @@ scissors.addEventListener('click', function(e) { // add event listener with a ca
     if (computerScore >= 5) {
         winner.appendChild(message);
         message.textContent = 'Computer is the winner! Game over.';
+        rock.disabled = true;
+        rock.style.backgroundColor = 'white';
+        paper.disabled = true;
+        paper.style.backgroundColor = 'white';
+        scissors.disabled = true;
+        scissors.style.backgroundColor = 'white';
     } else if (playerScore >= 5) {
         winner.appendChild(message);
         message.textContent = 'Player is the winner! Game over.';
+        rock.disabled = true;
+        rock.style.backgroundColor = 'white';
+        paper.disabled = true;
+        paper.style.backgroundColor = 'white';
+        scissors.disabled = true;
+        scissors.style.backgroundColor = 'white';
     }
 });
+
 
 /*  
 Display the running score, and announce a winner of the game once one player reaches 5 points.
 
 the running score is in a div for now. add some if/then to show a message when either player or computer gets 5 points.
 
+also make sure you can have this in a loop that stops when either the computer or player reaches 5 points.
 
 */
 
