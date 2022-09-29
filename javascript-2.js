@@ -99,7 +99,7 @@ computerCard.appendChild(computerWin);
 // the score vars are global so the playRound() can grab it and change it but don't need 
 // to return it since it is only updating the global var since it is not just local to playRound()
 // also the click event can grab the var's value and use it
-let computerScore = 0;  // track win total. starts at 0 and the loop will increase by 1 in each round
+let computerScore = 0;  // track win total. starts at 0 and game stops when either player or computer reaches 5 points
 let playerScore = 0;
 let tieScore = 0; // track tie total but don't show it. originally you had it shown but don't need it.
 
@@ -117,11 +117,12 @@ rock.addEventListener('click', function(e) {  // event listener with a callback 
     // code within the event listener. the computer part is from the computerPlay() that returns a var which is public so any 
     // function can grab it.
     singleRound.textContent = `${singleOutcome}`; // shows the result of that round in the div
-    computerWin.textContent = `Computer score: ${computerScore}`; // shows the computer score
-    playerWin.textContent = `Player score: ${playerScore}`; // shows the player score
+    computerWin.textContent = `Computer score: ${computerScore}`; // shows the computer score in the div
+    playerWin.textContent = `Player score: ${playerScore}`; // shows the player score in the div
     // tie.textContent = `Tie: ${tieScore}`;  // shows the tie score
     console.log(singleOutcome); // show the outcome of a single round
-    if (computerScore >= 5) {
+    if (computerScore >= 5) {  // after 5 points, then a new div shows with a message and the buttons are disabled and the color
+        // is changed
         winner.appendChild(message);
         message.textContent = 'Computer is the winner! Game over.';
         rock.disabled = true;
@@ -133,7 +134,8 @@ rock.addEventListener('click', function(e) {  // event listener with a callback 
         // for future reference if you ever want to create a reset button after the game has finished, then 
         // refer to repos/javascript-basics/number-game-error. this has code for adding a new button and restarting a game
         // it also has a loop to blank out the div p's to show a blank screen for a new game
-    } else if (playerScore >= 5) {
+    } else if (playerScore >= 5) { // after 5 points, then a new div shows with a message and the buttons are disabled and the color
+        // is changed
         winner.appendChild(message);
         message.textContent = 'Player is the winner! Game over.';
         rock.disabled = true;
@@ -159,11 +161,12 @@ paper.addEventListener('click', function(e) { // event listener with a callback 
     // code within the event listener. the computer part is from the computerPlay() that returns a var which is public so any 
     // function can grab it.
     singleRound.textContent = `${singleOutcome}`; // shows the result of that round in the div
-    computerWin.textContent = `Computer score: ${computerScore}`; // shows the computer score
-    playerWin.textContent = `Player score: ${playerScore}`; // shows the player score
+    computerWin.textContent = `Computer score: ${computerScore}`; // shows the computer score in the div
+    playerWin.textContent = `Player score: ${playerScore}`; // shows the player score in the div
     // tie.textContent = `Tie: ${tieScore}`;  // shows the tie score
     console.log(singleOutcome); // show the outcome of a single round
-    if (computerScore >= 5) {
+    if (computerScore >= 5) { // after 5 points, then a new div shows with a message and the buttons are disabled and the color
+        // is changed
         winner.appendChild(message);
         message.textContent = 'Computer is the winner! Game over.';
         rock.disabled = true;
@@ -172,7 +175,8 @@ paper.addEventListener('click', function(e) { // event listener with a callback 
         paper.style.backgroundColor = 'white';
         scissors.disabled = true;
         scissors.style.backgroundColor = 'white';
-    } else if (playerScore >= 5) {
+    } else if (playerScore >= 5) { // after 5 points, then a new div shows with a message and the buttons are disabled and the color
+        // is changed
         winner.appendChild(message);
         message.textContent = 'Player is the winner! Game over.';
         rock.disabled = true;
@@ -190,19 +194,20 @@ scissors.addEventListener('click', function(e) { // add event listener with a ca
     console.log('Player shows: ' + e.target.id);  // show just the id attribute which is scissors
     const playerSelection = scissors.id;  // put the id attribute in a var
     const computerSelection = computerPlay(); // calls the function which will return the computer's choice. put in a var
-    player.textContent = `Player selects: ${playerSelection}`;  // shows the player choice
-    computer.textContent = `Computer selects: ${computerSelection}`; // shows the computer choice
+    player.textContent = `Player selects: ${playerSelection}`;  // shows the player choice in the div
+    computer.textContent = `Computer selects: ${computerSelection}`; // shows the computer choice in the div
     // console.log('Player shows: ' + player); // show the player's selection
     const singleOutcome = playRound(playerSelection, computerSelection); // call the function and pass the playerSelection and
     // the computerSelection. must use var to receive the value that the function returns. the player part is from this block of
     // code within the event listener. the computer part is from the computerPlay() that returns a var which is public so any 
     // function can grab it.
-    singleRound.textContent = `${singleOutcome}`;  // shows the result of that round
-    computerWin.textContent = `Computer score: ${computerScore}`;  // shows the computer score
-    playerWin.textContent = `Player score: ${playerScore}`;  // shows the player score
+    singleRound.textContent = `${singleOutcome}`;  // shows the result of that round in the div
+    computerWin.textContent = `Computer score: ${computerScore}`;  // shows the computer score in the div
+    playerWin.textContent = `Player score: ${playerScore}`;  // shows the player score in the div
     // tie.textContent = `Tie: ${tieScore}`;  // shows the tie score
     console.log(singleOutcome);  // show the outcome of a single round
-    if (computerScore >= 5) {
+    if (computerScore >= 5) { // after 5 points, then a new div shows with a message and the buttons are disabled and the color
+        // is changed
         winner.appendChild(message);
         message.textContent = 'Computer is the winner! Game over.';
         rock.disabled = true;
@@ -211,7 +216,8 @@ scissors.addEventListener('click', function(e) { // add event listener with a ca
         paper.style.backgroundColor = 'white';
         scissors.disabled = true;
         scissors.style.backgroundColor = 'white';
-    } else if (playerScore >= 5) {
+    } else if (playerScore >= 5) { // after 5 points, then a new div shows with a message and the buttons are disabled and the color
+        // is changed
         winner.appendChild(message);
         message.textContent = 'Player is the winner! Game over.';
         rock.disabled = true;
